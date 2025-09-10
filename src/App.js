@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useState } from "react";
+import { AuthContext, AuthProvider } from "../src/components/context/AuthContext";
+import Register from "./components/Register/Register";
+import Login from "./components/login/Login";
+import TaskManager from "./components/Taskmanager/TaskManager";
 
-function App() {
+function MainApp() {
+  const { user } = useContext(AuthContext);
+  const [showLogin, setShowLogin] = useState(false);
+
+  if (user) {
+    return <TaskManager />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!showLogin ? (
+        <Register switchToLogin={() => setShowLogin(true)} />
+      ) : (
+        <Login switchToRegister={() => setShowLogin(false)} />
+      )}
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <h1 style={{textAlign:'center',fontFamily:'cursive'}}>Task Manager</h1>
+      <MainApp />
+    </AuthProvider>
+  );
+}

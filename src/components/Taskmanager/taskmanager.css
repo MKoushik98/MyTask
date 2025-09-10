@@ -1,0 +1,106 @@
+.task-manager {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.logout-btn {
+  padding: 8px 14px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}
+
+/* Task Form */
+.task-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.task-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.task-input:focus {
+  border: 1px solid #3498db;
+  outline: none;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.3);
+}
+
+.add-btn {
+  padding: 12px 18px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.add-btn:hover {
+  background: #2980b9;
+}
+
+/* Error */
+.error {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ✅ Responsive */
+@media (max-width: 700px) {
+  .task-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+}
