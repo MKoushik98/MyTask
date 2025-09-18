@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (formData) => {
     try {
       setError(null);
-      await axios.post("http://localhost:5000/register", formData);
+      await axios.post("https://task-management-backend-1dht.onrender.com/register", formData);
       alert("Registration successful! Please login.");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (username, password) => {
     try {
       setError(null);
-      const res = await axios.post("http://localhost:5000/login", { username, password });
+      const res = await axios.post("https://task-management-backend-1dht.onrender.com/login", { username, password });
       setUser(res.data.username);
       fetchTasks(res.data.username);
     } catch (err) {
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   // 🔹 Fetch tasks
   const fetchTasks = async (username) => {
     try {
-      const res = await axios.get(`http://localhost:5000/tasks/${username}`);
+      const res = await axios.get(`https://task-management-backend-1dht.onrender.com/tasks/${username}`);
       setTasks(res.data);
     } catch (err) {
       setError("Failed to fetch tasks");
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   const addTask = async (title, description) => {
     try {
       setError(null);
-      const res = await axios.post(`http://localhost:5000/tasks/${user}`, {
+      const res = await axios.post(`https://task-management-backend-1dht.onrender.com/tasks/${user}`, {
         title,
         description,
       });
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   const updateTask = async (id, title, description) => {
     try {
       setError(null);
-      const res = await axios.put(`http://localhost:5000/tasks/${user}/${id}`, {
+      const res = await axios.put(`https://task-management-backend-1dht.onrender.com/tasks/${user}/${id}`, {
         title,
         description,
       });
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
   const deleteTask = async (id) => {
     try {
       setError(null);
-      await axios.delete(`http://localhost:5000/tasks/${user}/${id}`);
+      await axios.delete(`https://task-management-backend-1dht.onrender.com/tasks/${user}/${id}`);
       setTasks(tasks.filter((t) => t.id !== id));
     } catch (err) {
       setError(err.response?.data?.message || "Task deletion failed");
